@@ -20,6 +20,10 @@ const StyledContainer = styled.div`
   overflow-y: scroll;
   padding: 20px;
   color: white;
+  @media (max-width: 1050px) {
+    height: 500px;
+    width: 100%;
+  }
 `;
 
 const StyledRooms = styled.div`
@@ -38,7 +42,6 @@ const StyledDivider = styled.div`
 `;
 
 function Rooms({ roomsData }) {
-  console.log(roomsData);
   return (
     <StyledContainer>
       {!roomsData ? (
@@ -49,7 +52,7 @@ function Rooms({ roomsData }) {
         roomsData.map(room => (
           <StyledRooms>
             <p>Room Name: {room.name}</p>
-            <p>Room type: {room.room_type_description}</p>
+            <p>Room Type: {room.room_type_description}</p>
             <p>{parse(room.description)}</p>
             <p>Minimum Ocupancy: {room['@min_occupancy']}</p>
             <p>Maximum Ocupancy: {room['@occupancy']}</p>

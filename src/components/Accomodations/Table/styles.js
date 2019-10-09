@@ -5,28 +5,13 @@ import TableRow from '@material-ui/core/TableRow';
 import Table from '@material-ui/core/Table';
 
 export const DataGridWrapper = styled.div`
-  /* @media (max-width: 1430px) {
-    .cejTpx .MuiTableRow-head th {
-      padding: 20px 8px !important;
-    }
-    .MuiTableRow-head th {
-      font-size: 12px;
-    }
-    .MuiTableCell-root {
-      padding: 10px 1px 19px 7px;
-    }
-  }
-  @media (max-width: 1330px) {
-    .cejTpx .MuiTableRow-head th {
-      padding: 20px 20px !important;
-    }
-  }
-  .MuiTableCell-root {
-    padding: 10px 20px 19px 15px;
-  } */
   height: 1000px;
   overflow-y: scroll;
   width: 50%;
+  @media (max-width: 1050px) {
+    height: 800px;
+    width: 100%;
+  }
 `;
 
 export const MUIHeadTableCell = styled(TableCell)`

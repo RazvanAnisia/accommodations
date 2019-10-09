@@ -7,13 +7,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
-  const [key, setKey] = useState('home');
-
-  return (
-    <>
-      <Accomodations />
-    </>
-  );
+  return <Accomodations />;
 }
 
 export default App;

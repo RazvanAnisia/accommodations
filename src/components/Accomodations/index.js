@@ -9,14 +9,15 @@ import styled from 'styled-components';
 const StyledWrapper = styled.div`
   display: flex;
   height: 1000px;
+  @media (max-width: 1050px) {
+    flex-direction: column;
+    height: 1500px;
+  }
 `;
 
 function Accomodations() {
   const [selectedRooms, setSelectedRooms] = useState(null);
 
-  useEffect(() => {
-    console.log(selectedRooms);
-  }, [selectedRooms]);
   return (
     <StyledWrapper>
       <Table setSelectedRooms={setSelectedRooms} data={data.accommodations} />

@@ -5,7 +5,6 @@ import parse from 'html-react-parser';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import TableBody from '@material-ui/core/TableBody';
 
 import * as S from './styles';
 
@@ -13,62 +12,19 @@ const columnsHeaders = ['Details', 'Type', 'Country', 'Rating', 'Directions'];
 
 export default function Table({ data, setSelectedRooms }) {
   const [sortedData, setSortedData] = useState(data);
-  const [sortedState, setSortedState] = useState({
-    sortingParameter: '',
-    sortAsc: true
-  });
-
-  const handleTHeadClick = parameter => {
-    setSortedState({
-      sortingParameter: parameter,
-      sortAsc: !sortedState.sortAsc
-    });
-  };
 
   const handleAccomClick = rooms => {
     setSelectedRooms(rooms);
     console.log(rooms);
   };
-  // const sortAccData = (sortData, isDescending) => {
-  //   return sortData.slice().sort(function(a, b) {
-  //     if (getTimestamp(a.) < getTimestamp(b.fields.time)) {
-  //       return -1;
-  //     }
-  //     if (getTimestamp(a.fields.time) > getTimestamp(b.fields.time)) {
-  //       return 1;
-  //     }
-  //     return 0;
-  //   });
-  // };
-  // useEffect(() => {
-  //   const { sortingParameter, sortAsc } = sortedState;
-  //   if (sortingParameter === 'details') {
-  //     sortAsc
-  //       ? setSortedData(false))
-  //       : setSortedData(true);
-  //   } else if (sortingParameter === 'date') {
-  //     sortAsc
-  //       ? setSortedData(sortByDateAsc())
-  //       : setSortedData(sortByDateAsc().reverse());
-  //   } else if (sortingParameter === 'event type') {
-  //     sortAsc
-  //       ? setSortedData(sortByEvent(false))
-  //       : setSortedData(sortByEvent(true).reverse());
-  //   } else if (filtersWithDistances.length && sortingParameter === 'distance') {
-  //     sortAsc
-  //       ? setSortedData(sortByDistance(false))
-  //       : setSortedData(sortByDistance(true).reverse());
-  //   }
-  // }, [sortedState]);
+
   return (
     <S.DataGridWrapper>
       <S.MUITable stickyHeader>
         <TableHead style={{ background: 'red' }}>
           <TableRow>
             {columnsHeaders.map((header, index) => (
-              <S.MUIHeadTableCell
-                onClick={() => handleTHeadClick(header)}
-                key={`TableHeadCell${index}`}>
+              <S.MUIHeadTableCell key={`TableHeadCell${index}`}>
                 {header}{' '}
               </S.MUIHeadTableCell>
             ))}
@@ -81,7 +37,6 @@ export default function Table({ data, setSelectedRooms }) {
               onClick={() => handleAccomClick(accomodation.rooms)}>
               <TableCell>
                 <h4>{accomodation.name}</h4>
-
                 <p>Resort: {accomodation.resort.name}</p>
                 <div>{parse(accomodation.description)}</div>
                 <p>Address:</p>
@@ -95,7 +50,7 @@ export default function Table({ data, setSelectedRooms }) {
                 <br />
                 <p>Facilities:</p>
                 {accomodation.facilities.map(facility => (
-                  <li>{facility.label}</li>
+                  <li key={facility['@id']}>{facility.label}</li>
                 ))}
               </TableCell>
               <TableCell>{accomodation.type.name}</TableCell>
