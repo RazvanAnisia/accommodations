@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 
 import parse from 'html-react-parser';
 
@@ -8,13 +8,14 @@ import TableCell from '@material-ui/core/TableCell';
 
 import * as S from './styles';
 
-const columnsHeaders = ['Details', 'Type', 'Country', 'Rating', 'Directions'];
+const columnsHeaders = ['Details', 'Type', 'Rating', 'Country'];
 
-export default function Table({ data, setSelectedRooms }) {
+export default function Table({ data, setSelectedRooms, scrollAnim }) {
   const [sortedData, setSortedData] = useState(data);
 
   const handleAccomClick = rooms => {
     setSelectedRooms(rooms);
+    scrollAnim();
   };
 
   return (
@@ -39,6 +40,14 @@ export default function Table({ data, setSelectedRooms }) {
                 <h4>{accomodation.name}</h4>
                 <p>Resort: {accomodation.resort.name}</p>
                 <div>{parse(accomodation.description)}</div>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${
+                    accomodation.location['@location_lat']
+                  },${accomodation.location['@location_long']}`}
+                  target="_blank"
+                >
+                  Directions
+                </a>
                 <p>Address:</p>
                 <span>{accomodation.address_1 && accomodation.address_1} </span>
                 <span>{accomodation.address_2 && accomodation.address_2} </span>
@@ -59,16 +68,6 @@ export default function Table({ data, setSelectedRooms }) {
                 <strong>
                   {accomodation.country.name && accomodation.country.name}
                 </strong>
-              </TableCell>
-              <TableCell>
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${
-                    accomodation.location['@location_lat']
-                  },${accomodation.location['@location_long']}`}
-                  target="_blank"
-                >
-                  Directions
-                </a>
               </TableCell>
             </S.MUIBodyTableRow>
           ))}
