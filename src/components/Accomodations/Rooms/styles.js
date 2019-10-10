@@ -12,7 +12,8 @@ export const StyledContainer = styled.div`
   align-items: center;
   flex-direction: column;
   overflow-y: scroll;
-  padding: 20px;
+  padding-left: 20px;
+  box-sizing: border-box;
   color: white;
   font-family: sans-serif;
 

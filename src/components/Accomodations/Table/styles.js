@@ -3,6 +3,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import Table from '@material-ui/core/Table';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 export const DataGridWrapper = styled.div`
   height: 1000px;
@@ -11,6 +12,13 @@ export const DataGridWrapper = styled.div`
   @media (max-width: 1050px) {
     height: 800px;
     width: 100%;
+  }
+  .MuiTableCell-root {
+    display: table-cell;
+    padding: 10px;
+  }
+  .MuiSvgIcon-root {
+    margin-bottom: -7px;
   }
 `;
 
@@ -44,21 +52,6 @@ export const MUITable = styled(Table)`
   }
 `;
 
-export const InnerSection = styled.div`
-  height: 520px;
-  .MuiTableCell-stickyHeader {
-    background-color: #3c2bcd;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-
-  .os-scrollbar-handle {
-    background: #2c2c2c !important;
-    width: 8px;
-    margin-top: -4px;
-  }
-
-  .os-scrollbar-track {
-    background: transparent !important;
-  }
+export const StyledChevron = styled(KeyboardArrowDownIcon)`
+  transform: ${props => (props.direction === 'up' ? 'rotate(180deg)' : '')};
 `;
