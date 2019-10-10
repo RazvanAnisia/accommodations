@@ -1,7 +1,7 @@
 import * as data from '../../utils/accommodation_data.json';
 
 import React, { useState, useEffect } from 'react';
-import Room from './Room';
+import Rooms from './Rooms';
 import Table from './Table';
 
 import * as S from './styles';
@@ -12,7 +12,7 @@ function Accomodations() {
   return (
     <S.StyledWrapper>
       <Table setSelectedRooms={setSelectedRooms} data={data.accommodations} />
-      <Room roomsData={selectedRooms} />
+      <Rooms roomsData={selectedRooms} />
     </S.StyledWrapper>
   );
 }

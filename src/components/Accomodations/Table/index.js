@@ -15,7 +15,6 @@ export default function Table({ data, setSelectedRooms }) {
 
   const handleAccomClick = rooms => {
     setSelectedRooms(rooms);
-    console.log(rooms);
   };
 
   return (
@@ -34,7 +33,8 @@ export default function Table({ data, setSelectedRooms }) {
           {sortedData.map(accomodation => (
             <S.MUIBodyTableRow
               key={accomodation['@key']}
-              onClick={() => handleAccomClick(accomodation.rooms)}>
+              onClick={() => handleAccomClick(accomodation.rooms)}
+            >
               <TableCell>
                 <h4>{accomodation.name}</h4>
                 <p>Resort: {accomodation.resort.name}</p>
@@ -65,7 +65,8 @@ export default function Table({ data, setSelectedRooms }) {
                   href={`https://www.google.com/maps/search/?api=1&query=${
                     accomodation.location['@location_lat']
                   },${accomodation.location['@location_long']}`}
-                  target="_blank">
+                  target="_blank"
+                >
                   Directions
                 </a>
               </TableCell>
