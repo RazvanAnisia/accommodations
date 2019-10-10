@@ -9,7 +9,7 @@ const Rooms = ({ roomsData }) => {
     <S.StyledContainer>
       {!roomsData ? (
         <S.StyledDefault>
-          Select an accomodation to see available rooms
+          <p>Select an accomodation to see available rooms</p>
         </S.StyledDefault>
       ) : (
         roomsData.map(room => <Room key={room['@id']} room={room} />)
