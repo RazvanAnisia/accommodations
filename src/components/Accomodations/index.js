@@ -4,25 +4,16 @@ import React, { useState, useEffect } from 'react';
 import Room from './Room';
 import Table from './Table';
 
-import styled from 'styled-components';
-
-const StyledWrapper = styled.div`
-  display: flex;
-  height: 1000px;
-  @media (max-width: 1050px) {
-    flex-direction: column;
-    height: 1500px;
-  }
-`;
+import * as S from './styles';
 
 function Accomodations() {
   const [selectedRooms, setSelectedRooms] = useState(null);
 
   return (
-    <StyledWrapper>
+    <S.StyledWrapper>
       <Table setSelectedRooms={setSelectedRooms} data={data.accommodations} />
       <Room roomsData={selectedRooms} />
-    </StyledWrapper>
+    </S.StyledWrapper>
   );
 }
 
