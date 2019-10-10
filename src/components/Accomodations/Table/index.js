@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import parse from 'html-react-parser';
 
@@ -14,40 +14,41 @@ export default function Table({ data, setSelectedRooms, scrollAnim }) {
   const [sortedData, setSortedData] = useState(data);
   const [sortedState, setSortedState] = useState({
     sortingParameter: 'Type',
-    sortAsc: true
+    sortDesc: false
   });
 
   const handleTHeadClick = parameter => {
-    setSortedState({
-      sortingParameter: parameter,
-      sortAsc: !sortedState.sortAsc
-    });
+    setSortedData(sortByType(parameter, true));
   };
 
   console.log(sortedData);
-  const sortByType = isDescending => {
-    //Sort alphabetically
-    let firstSort = sortedData.slice().sort(function(a, b) {
-      if (a.type.name < b.type.name) {
-        return -1;
-      }
-      if (a.type.name > b.type.name) {
-        return 1;
-      }
-      return 0;
-    });
-    console.log(firstSort);
-    return firstSort;
-  };
 
   const handleAccomClick = rooms => {
     setSelectedRooms(rooms);
     scrollAnim();
   };
 
+  const sortByType = useCallback(
+    (parameter, isDescending) => {
+      let firstSort = sortedData.slice().sort(function(a, b) {
+        if (a.type.name < b.type.name) {
+          return -1;
+        }
+        if (a.type.name > b.type.name) {
+          return 1;
+        }
+        return 0;
+      });
+
+      console.log(firstSort);
+      return isDescending ? firstSort.reverse() : firstSort;
+    },
+    [sortedData]
+  );
+
   useEffect(() => {
     setSortedData(sortByType());
-  }, [sortByType, sortedState]);
+  }, [sortByType, sortedData, sortedState]);
 
   return (
     <S.DataGridWrapper>
