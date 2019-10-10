@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import parse from 'html-react-parser';
 
@@ -12,11 +12,42 @@ const columnsHeaders = ['Details', 'Type', 'Rating', 'Country'];
 
 export default function Table({ data, setSelectedRooms, scrollAnim }) {
   const [sortedData, setSortedData] = useState(data);
+  const [sortedState, setSortedState] = useState({
+    sortingParameter: 'Type',
+    sortAsc: true
+  });
+
+  const handleTHeadClick = parameter => {
+    setSortedState({
+      sortingParameter: parameter,
+      sortAsc: !sortedState.sortAsc
+    });
+  };
+
+  console.log(sortedData);
+  const sortByType = isDescending => {
+    //Sort alphabetically
+    let firstSort = sortedData.slice().sort(function(a, b) {
+      if (a.type.name < b.type.name) {
+        return -1;
+      }
+      if (a.type.name > b.type.name) {
+        return 1;
+      }
+      return 0;
+    });
+    console.log(firstSort);
+    return firstSort;
+  };
 
   const handleAccomClick = rooms => {
     setSelectedRooms(rooms);
     scrollAnim();
   };
+
+  useEffect(() => {
+    setSortedData(sortByType());
+  }, [sortByType, sortedState]);
 
   return (
     <S.DataGridWrapper>
@@ -24,7 +55,10 @@ export default function Table({ data, setSelectedRooms, scrollAnim }) {
         <TableHead style={{ background: 'red' }}>
           <TableRow>
             {columnsHeaders.map((header, index) => (
-              <S.MUIHeadTableCell key={`TableHeadCell${index}`}>
+              <S.MUIHeadTableCell
+                key={`TableHeadCell${index}`}
+                onClick={() => handleTHeadClick(header)}
+              >
                 {header}{' '}
               </S.MUIHeadTableCell>
             ))}
