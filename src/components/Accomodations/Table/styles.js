@@ -26,6 +26,7 @@ export const MUIHeadTableCell = styled(TableCell)`
   color: white !important;
   cursor: pointer;
   background: #08166b !important;
+  font-weight: bold !important;
 `;
 
 export const MUITableBody = styled(TableBody)`
@@ -39,9 +40,10 @@ export const MUITableBody = styled(TableBody)`
 
 export const MUIBodyTableRow = styled(TableRow)`
   text-decoration: none;
+  background: #ffffff;
   &:hover {
     cursor: pointer;
-    background-color: #b7beed;
+    background-color: #e8e9f4;
   }
 `;
 
@@ -54,4 +56,9 @@ export const MUITable = styled(Table)`
 
 export const StyledChevron = styled(KeyboardArrowDownIcon)`
   transform: ${props => (props.direction === 'up' ? 'rotate(180deg)' : '')};
+`;
+
+export const StyledAccomName = styled.h4`
+  color: #ea067e;
+  font-weight: bold;
 `;

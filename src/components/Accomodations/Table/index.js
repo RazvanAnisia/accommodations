@@ -50,7 +50,7 @@ export default function Table({ data, setSelectedRooms, scrollAnim }) {
               <S.MUIHeadTableCell
                 key={`TableHeadCell${index}`}
                 onClick={() => handleTHeadClick(header)}>
-                {header}{' '}
+                {header}
                 {header === 'Type' ? (
                   <S.StyledChevron
                     direction={sortedDirection ? 'up' : 'down'}
@@ -66,7 +66,7 @@ export default function Table({ data, setSelectedRooms, scrollAnim }) {
               key={accomodation['@id']}
               onClick={() => handleAccomClick(accomodation.rooms)}>
               <TableCell>
-                <h4>{accomodation.name}</h4>
+                <S.StyledAccomName>{accomodation.name}</S.StyledAccomName>
                 <p>Resort: {accomodation.resort.name}</p>
                 <div>{parse(accomodation.description)}</div>
                 <a
