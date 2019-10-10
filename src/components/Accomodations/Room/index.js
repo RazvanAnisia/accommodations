@@ -2,8 +2,8 @@ import React from 'react';
 
 import parse from 'html-react-parser';
 
-import * as data from '../../utils/accommodation_data.json';
-import * as roomData from '../../utils/accommodation_availability_data.json';
+import * as data from '../../../utils/accommodation_data.json';
+import * as roomData from '../../../utils/accommodation_availability_data.json';
 
 import styled from 'styled-components';
 

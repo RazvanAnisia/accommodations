@@ -1,7 +1,7 @@
 import * as data from '../../utils/accommodation_data.json';
 
 import React, { useState, useEffect } from 'react';
-import Room from '../Room';
+import Room from './Room';
 import Table from './Table';
 
 import styled from 'styled-components';
