@@ -20,5 +20,4 @@ Live version is currently available on Netlify and has built in CI thanks to Net
 
 Unit tests are written using Jest and Enzyme.
 
-Test were written using Jest and Enzyme.
 
