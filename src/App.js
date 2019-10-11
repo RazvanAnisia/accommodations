@@ -2,8 +2,8 @@ import React from 'react';
 
 import Accomodations from './components/Accomodations';
 
-function App() {
+const App = () => {
   return <Accomodations />;
-}
+};
 
 export default App;

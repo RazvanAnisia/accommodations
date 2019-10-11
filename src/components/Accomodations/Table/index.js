@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import parse from 'html-react-parser';
-
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
@@ -15,8 +14,6 @@ export default function Table({ data, setSelectedRooms, scrollAnim }) {
   const [sortedDirection, setSortedDirection] = useState(false);
 
   const handleTHeadClick = parameter => {
-    console.log(parameter);
-    console.log(sortedDirection);
     if (parameter === 'Type') {
       setSortedData(sortByType(sortedDirection));
       setSortedDirection(!sortedDirection);

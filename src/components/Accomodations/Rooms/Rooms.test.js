@@ -20,10 +20,3 @@ describe('Rooms', () => {
     expect(wrapper.find(StyledDefault)).toHaveLength(1);
   });
 });
-
-describe('Rooms', () => {
-  it('Should render Rooms and display the individual rooms', () => {
-    wrapper.setProps({ roomsData: [] });
-    expect(wrapper.find(StyledDefault));
-  });
-});

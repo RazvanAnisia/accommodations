@@ -12,7 +12,7 @@ configure({
 });
 
 describe('Accomomdations', () => {
-  it('should render the accommodations table and Rooms with default state', () => {
+  it('should render the accommodations table and Rooms ', () => {
     const wrapper = shallow(<Accomodations />);
     expect(wrapper.find(Table)).toHaveLength(1);
     expect(wrapper.find(Rooms)).toHaveLength(1);
